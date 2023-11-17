@@ -1,0 +1,35 @@
+fun heapify(arr: IntArray, size: Int) {
+    for (i in 1 until size) {
+        var child = i
+        do {
+            val root = (child - 1) / 2
+            if (arr[root] > arr[child]) {
+                val temp = arr[root]
+                arr[root] = arr[child]
+                arr[child] = temp
+            }
+            child = root
+        } while (child != 0)
+    }
+}
+
+fun heap(arr: IntArray, size: IntArray) {
+    val temp = arr[0]
+    arr[0] = arr[size[0] - 1]
+    arr[size[0] - 1] = temp
+    size[0]--
+}
+
+fun main() {
+    var size = intArrayOf(10)
+    val arr = intArrayOf(5, 6, 10, 4, 3, 8, 7, 1, 2, 9)
+
+    for (i in 0 until 10) {
+        heapify(arr, size[0])
+        heap(arr, size)
+    }
+
+    for (i in 0 until 10) {
+        print("${arr[i]} ")
+    }
+}
