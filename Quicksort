@@ -1,0 +1,32 @@
+fun quickSort(arr: IntArray, left: Int, right: Int) {
+    var L = left
+    var R = right
+    var temp: Int
+    val pivot = arr[(L + R) / 2]
+
+    while (L <= R) {
+        while (arr[L] < pivot) L++
+        while (arr[R] > pivot) R--
+        if (L <= R) {
+            if (L != R) {
+                temp = arr[L]
+                arr[L] = arr[R]
+                arr[R] = temp
+            }
+            L++
+            R--
+        }
+    }
+    if (left < R) quickSort(arr, left, R)
+    if (L < right) quickSort(arr, L, right)
+}
+
+fun main() {
+    val arr = intArrayOf(5, 3, 7, 6, 1, 9, 0, 2, 8, 4)
+
+    quickSort(arr, 0, arr.size - 1)
+
+    for (element in arr) {
+        print("$element ")
+    }
+}
