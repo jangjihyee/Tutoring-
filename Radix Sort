@@ -1,0 +1,24 @@
+fun main() {
+ val bucket = IntArray(10)
+ val list = intArrayOf(1, 0, 7, 8, 4, 3, 5)
+ val cnt = list.size
+ // 버킷을 초기화한다.
+ for (i in 0 until 10) {
+ bucket[i] = -1
+ }
+ // 버킷 이용
+ for (i in 0 until cnt) {
+ bucket[list[i]] = list[i]
+ }
+ // 버킷에서 값을 옮긴다.
+ var j = 0
+ for (i in 0 until 10) {
+ if (bucket[i] != -1) {
+ list[j++] = bucket[i]
+ }
+ }
+ // 정렬된 리스트를 출력한다.
+ for (i in 0 until cnt) {
+ print("${list[i]} ")
+ }
+}
