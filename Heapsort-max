@@ -2,14 +2,14 @@ fun heapify(arr: IntArray, size: Int) {
     for (i in 1 until size) {
         var child = i
         do {
-            val root = (child - 1) / 2
-            if (arr[root] < arr[child]) {
+            val root = (child - 1) / 2 // 현재 자식 노드의 부모 인덱스를 계산한다.
+            if (arr[root] < arr[child]) { //부모 노드가 자식 노드보다 작은지 비교한다.
                 val temp = arr[root]
                 arr[root] = arr[child]
                 arr[child] = temp
             }
             child = root
-        } while (child != 0)
+        } while (child != 0) // 최상위 노드까지 반복해서 검사한다.
     }
 }
 
@@ -24,11 +24,13 @@ fun main() {
     var size = intArrayOf(10)
     val arr = intArrayOf(5, 6, 10, 4, 3, 8, 7, 1, 2, 9)
 
+    //초기 배열을 Max Heap으로 만든다.
     for (i in 0 until 10) {
         heapify(arr, size[0])
         heap(arr, size)
     }
 
+    //Max Heap으로 정렬된 배열 출력
     for (i in 0 until 10) {
         print("${arr[i]} ")
     }
