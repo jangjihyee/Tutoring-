@@ -2,11 +2,12 @@ fun quickSort(arr: IntArray, left: Int, right: Int) {
     var L = left
     var R = right
     var temp: Int
-    val pivot = arr[(L + R) / 2]
+    val pivot = arr[(L + R) / 2] // 피벗을 배열 가운데 위치한 값으로 설정한다.
 
+    // 피벗을 기준으로 작은 값은 왼쪽, 큰 값은 오른쪽으로 나눈다.
     while (L <= R) {
-        while (arr[L] < pivot) L++
-        while (arr[R] > pivot) R--
+        while (arr[L] < pivot) L++ //기준보다 작은 값 찾을 때까지 인덱스 증가
+        while (arr[R] > pivot) R-- //기준보다 큰 값 찾을 때까지 인덱스 감소
         if (L <= R) {
             if (L != R) {
                 temp = arr[L]
@@ -17,8 +18,8 @@ fun quickSort(arr: IntArray, left: Int, right: Int) {
             R--
         }
     }
-    if (left < R) quickSort(arr, left, R)
-    if (L < right) quickSort(arr, L, right)
+    if (left < R) quickSort(arr, left, R) // 왼쪽 부분 배열 재귀
+    if (L < right) quickSort(arr, L, right) //오른쪽 부분 배열 재귀
 }
 
 fun main() {
@@ -26,6 +27,7 @@ fun main() {
 
     quickSort(arr, 0, arr.size - 1)
 
+    // 출력
     for (element in arr) {
         print("$element ")
     }
